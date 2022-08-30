@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     # Meus Apps
     'contas',
     'postagens',
+
+    #De Terceiros
 ]
 
 MIDDLEWARE = [
@@ -51,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # De Terceiros
 ]
 
 ROOT_URLCONF = 'techblog.urls'

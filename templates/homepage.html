@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block content %}
+<div class="w-2/3 mx-auto">
+  <div class="flex gap-10 justify-center bg-blue-300/80 p-4 rounded-3xl">
+    <div class="w-2/5 self-center">
+      <h1
+        class="xl:text-6xl md:text-3xl text-red-600 text-justify p-2 font-semibold"
+      >
+        <span class="font-bold text-gray-900 text-7xl">T</span>ECH BLOG
+      </h1>
+      <h2 class="xl:text-xl md:text-md text-left p-2 pl-4 text-gray-900">
+        Esse blog é dedicado a ajudar você a ficar antenado as últimas
+        tecnologias do mercado. Sobre lançamento de novos frameworks, linguagens
+        de programação ou outras tecnologias, sacie agora sua curiosidade.
+      </h2>
+      <div class="flex p-2">
+        <button
+          class="bg-gray-900 hover:bg-red-600 text-blue-300 p-2 text-xl font-semibold rounded-2xl transition ease-in-out duration-700"
+        >
+          Postagens
+        </button>
+      </div>
+    </div>
+    <img
+      src="https://dummyimage.com/400x400"
+      alt="hero_image"
+      class="rounded-full p-2 border-2 border-red-600"
+    />
+  </div>
+</div>
+{% endblock content %}
