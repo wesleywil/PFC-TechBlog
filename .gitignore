@@ -127,7 +127,7 @@ sftp-config.json
 
 
 contas/migrations
-project/migrations
+postagens/migrations
 
 # Steps File
 passo_a_passo.txt

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # Meus Apps
     'contas',
+    'postagens',
 ]
 
 MIDDLEWARE = [
