@@ -10,11 +10,11 @@ class Perfil(models.Model):
     usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.user.username
+        return self.usuario.username
 
 def signal_apos_criacao_de_usuario(sender, instance, created, **kwargs):
     print(instance, created)
     if created:
-        Perfil.objects.create(user = instance)
+        Perfil.objects.create(usuario = instance)
 
 post_save.connect(signal_apos_criacao_de_usuario, sender=Usuario)
