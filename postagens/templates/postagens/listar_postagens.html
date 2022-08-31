@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block content %}
+<div class="bg-blue-300 text-black container mx-auto">
+  <h1 class="text-3xl">Postagens</h1>
+  <div>
+    {% for postagem in postagens %}
+    <li>{{postagem.titulo}}</li>
+    <div>
+      <h1>Categoria</h1>
+      {% for ct in postagem.categorias.all %}
+      <li>{{ct.titulo}}</li>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

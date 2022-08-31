@@ -1,0 +1,10 @@
+{% extends "base.html" %} {% block content %}
+<div class="bg-blue-300 text-black container mx-auto">
+  <h1 class="text-3xl">Categorias</h1>
+  <div>
+    {% for categoria in categorias %}
+    <li>{{categoria.titulo}}</li>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

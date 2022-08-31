@@ -1,0 +1,9 @@
+{% extends "base.html" %} {% block content %}
+<div class="bg-blue-300 text-black container mx-auto">
+  <h1 class="text-3xl">Detalhes {{postagem.titulo}}</h1>
+  <div>
+    <h1>{{postagem.texto}}</h1>
+    <h1>{{postagem.add_time}}</h1>
+  </div>
+</div>
+{% endblock content %}
