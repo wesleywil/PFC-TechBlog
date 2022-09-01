@@ -1,14 +1,22 @@
 {% extends "base.html" %} {% block content %}
-<div class="w-1/2 mx-auto">
+<div class="xl:w-1/2 md:w-2/3 mx-auto">
   <form method="POST" class="bg-blue-300 rounded-xl p-2">
-    <h1 class="text-3xl text-center m-2 text-gray-900">{{acao}}</h1>
+    <h1
+      class="text-3xl font-semibold uppercase underline text-center m-2 text-gray-900"
+    >
+      {{acao}}
+    </h1>
     {% csrf_token %}
-    <div class="p-2 text-white">{{form.as_p}}</div>
+    <div class="p-2 text-gray-900 text-2xl font-semibold">{{form.as_p}}</div>
     <div class="mt-2 flex gap-2 justify-center text-center">
-      <button class="p-2 w-24 text-xl bg-red-700 text-blue-300 rounded-xl">
+      <button
+        class="p-2 w-24 text-xl bg-red-700 hover:bg-gray-900 text-white rounded-xl transition ease-in-out duration-700"
+      >
         {{botao}}
       </button>
-      <a href="#" class="p-2 w-24 text-xl bg-gray-900 text-blue-300 rounded-xl"
+      <a
+        href="{% url 'blog:listar_categorias' %}"
+        class="p-2 w-24 text-xl bg-gray-900 hover:bg-red-700 text-white rounded-xl transition ease-in-out duration-700"
         >Cancelar</a
       >
     </div>

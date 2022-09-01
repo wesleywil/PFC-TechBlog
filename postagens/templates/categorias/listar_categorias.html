@@ -1,9 +1,13 @@
 {% extends "base.html" %} {% block content %}
-<div class="bg-blue-300 text-black container mx-auto">
-  <h1 class="text-3xl">Categorias</h1>
-  <div>
+<div class="bg-blue-300 text-black container mx-auto rounded-xl p-2">
+  <h1 class="text-5xl text-center font-bold uppercase underline">Categorias</h1>
+  <div class="flex gap-2 p-2 m-2">
     {% for categoria in categorias %}
-    <li>{{categoria.titulo}}</li>
+    <a
+      href="{%  url 'blog:detalhe_categoria' categoria.pk %}"
+      class="bg-gray-900 hover:bg-gray-700 text-blue-300 text-xl rounded-full px-2 py-1 transition ease-in-out duration-700"
+      >{{categoria.titulo}}</a
+    >
     {% endfor %}
   </div>
 </div>

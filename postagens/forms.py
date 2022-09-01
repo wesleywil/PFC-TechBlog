@@ -12,9 +12,9 @@ class PostagemModelForm(forms.ModelForm):
         )
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['titulo'].widget.attrs.update({'class':'w-full bg-black/50 text-xl m-2 rounded-xl pl-1'})
-        self.fields['texto'].widget.attrs.update({'class':'w-full bg-black/50 text-xl m-2 rounded-xl pl-1'})
-        self.fields['categorias'].widget.attrs.update({'class':'w-full bg-black/50 text-xl m-2 rounded-xl pl-1'})
+        self.fields['titulo'].widget.attrs.update({'class':'w-full border-2 bg-white/40 border-red-700 text-xl m-2 rounded-xl pl-1'})
+        self.fields['texto'].widget.attrs.update({'class':'w-full border-2 bg-white/40 border-red-700 text-xl m-2 rounded-xl pl-1'})
+        self.fields['categorias'].widget.attrs.update({'class':'w-full border-2 bg-white/40 border-red-700 text-xl m-2 rounded-xl pl-1'})
 
 class CategoriaModelForm(forms.ModelForm):
     class Meta:
@@ -25,5 +25,5 @@ class CategoriaModelForm(forms.ModelForm):
         )
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['titulo'].widget.attrs.update({'class':'w-full bg-black/50 text-xl m-2 rounded-xl pl-1'})
-        self.fields['descricao'].widget.attrs.update({'class':'w-full bg-black/50 text-xl m-2 rounded-xl pl-1'})
+        self.fields['titulo'].widget.attrs.update({'class':'w-full border-2 bg-white/40 border-red-700 text-xl m-2 rounded-xl pl-1'})
+        self.fields['descricao'].widget.attrs.update({'class':'w-full border-2 bg-white/40 border-red-700 text-xl m-2 rounded-xl pl-1'})

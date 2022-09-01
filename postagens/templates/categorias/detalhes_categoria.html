@@ -1,8 +1,19 @@
 {% extends "base.html" %} {% block content %}
-<div class="bg-blue-300 text-black container mx-auto">
-  <h1 class="text-3xl">Detalhes {{categoria.titulo}}</h1>
-  <div>
-    <h1>{{categoria.descricao}}</h1>
+<div class="bg-blue-300 text-black container mx-auto p-2 rounded-xl">
+  <h1 class="text-3xl font-semibold text-center">
+    Detalhes {{categoria.titulo}}
+  </h1>
+  <div class="p-2 m-2 text-center text-xl font-semibold flex flex-col">
+    <p>{{categoria.descricao}}</p>
+    <div class="mt-2 p-2 flex gap-2 justify-center">
+      {% if request.user.admin %}
+      <a
+        href="{% url 'blog:atualizar_categoria' categoria.pk %}"
+        class="text-xl bg-red-700 hover:bg-gray-900 text-white px-2 py-1 rounded-xl transition ease-in-out duration-700"
+        >Atualizar</a
+      >
+      {% else %} {% endif %}
+    </div>
   </div>
 </div>
 {% endblock content %}
