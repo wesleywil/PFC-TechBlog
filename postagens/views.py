@@ -7,6 +7,7 @@ from .models import Postagem, Categoria
 from .forms import PostagemModelForm, CategoriaModelForm
 
 from contas.models import Perfil
+from contas.mixins import AdminAndLoginRequired
 
 class ListarPosts(generic.ListView):
     template_name = "postagens/listar_postagens.html"
@@ -19,9 +20,15 @@ class VerDetalhesPosts(generic.DetailView):
     model = Postagem
 
 class CriarPost(LoginRequiredMixin, generic.CreateView):
-    template_name = "postagens/criar_postagem.html"
+    template_name = "postagens/form_postagem.html"
     form_class = PostagemModelForm
 
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['acao'] = "Criar nova postagem"
+        data['botao'] = "Criar"
+        return data
+    
     def form_valid(self, form):
         perfil = Perfil.objects.get(pk = self.request.user.pk)
         obj = form.save(commit=False)
@@ -34,11 +41,17 @@ class CriarPost(LoginRequiredMixin, generic.CreateView):
     
 
 class AtualizarPost(UserPassesTestMixin, generic.UpdateView):
-    template_name = "postagens/editar_postagem.html"
+    template_name = "postagens/form_postagem.html"
     context_object_name = "postagem"
     form_class = PostagemModelForm
     model = Postagem
     queryset = Postagem.objects.all()
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['acao'] = "Atualizar Postagem"
+        data['botao'] = "Atualizar"
+        return data
 
     def test_func(self):
         return self.get_object().dono_id == self.request.user.pk
@@ -53,15 +66,27 @@ class VerDetalhesCategorias(generic.DetailView):
     context_object_name = "categoria"
     model = Categoria
 
-class CriarCategoria(generic.CreateView):
-    template_name = "categorias/criar_categoria.html"
+class CriarCategoria(AdminAndLoginRequired, generic.CreateView):
+    template_name = "categorias/form_categoria.html"
     form_class = CategoriaModelForm
 
-class AtualizarCategoria(generic.UpdateView):
-    template_name = "categorias/editar_categoria.html"
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['acao'] = "Criar nova categoria"
+        data['botao'] = "Criar"
+        return data
+
+class AtualizarCategoria(AdminAndLoginRequired, generic.UpdateView):
+    template_name = "categorias/form_categoria.html"
     context_object_name = "categoria"
     form_class = CategoriaModelForm
     model = Categoria
     queryset = Categoria.objects.all()
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['acao'] = "Atualizar categoria"
+        data['botao'] = "Atualizar"
+        return data
 
 
