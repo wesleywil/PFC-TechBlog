@@ -132,3 +132,14 @@ postagens/migrations
 # Steps File
 passo_a_passo.txt
 
+# Não Ignore
+!static/
+static/*
+!static/images/
+static/images/*
+!static/images/usuarios/
+static/images/usuarios/*
+!static/images/usuarios/predefinido/
+static/images/usuarios/predefinido/*
+!static/images/usuarios/predefinido/businessman.png
+
