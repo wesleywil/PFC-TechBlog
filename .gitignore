@@ -143,3 +143,11 @@ static/images/usuarios/*
 static/images/usuarios/predefinido/*
 !static/images/usuarios/predefinido/businessman.png
 
+!static/
+static/*
+!static/images/
+static/images/*
+!static/images/projeto/
+static/images/projeto/*
+!static/images/projeto/*
+

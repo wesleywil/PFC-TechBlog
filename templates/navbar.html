@@ -1,3 +1,4 @@
+{% load static %}
 <header class="text-gray-900 body-font bg-blue-300">
   <div
     class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
@@ -25,21 +26,11 @@
       href="{% url 'homepage' %}"
       class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-red-600 lg:items-center lg:justify-center mb-4 md:mb-0"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        class="w-10 h-10 text-gray-900 p-2 bg-blue-300 rounded-full"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
-        ></path>
-      </svg>
-      <span class="ml-3 text-xl">TechBlog</span>
+      <img
+        class="w-16 p-0 hover:animate-pulse"
+        src="{% static 'images/projeto/techlogo.svg' %}"
+        alt=""
+      />
     </a>
     <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0 flex gap-2">
       {% if request.user.is_authenticated %}
