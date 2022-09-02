@@ -41,23 +41,29 @@
       </svg>
       <span class="ml-3 text-xl">TechBlog</span>
     </a>
-    <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
-      <button
+    <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0 flex gap-2">
+      {% if request.user.is_authenticated %}
+      <a
+        href="{% url 'logout' %}"
+        class="inline-flex items-center text-blue-300 hover:text-gray-900 hover:border-2 hover:border-gray-900 font-semibold bg-gray-900 hover:bg-blue-300 border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 transition ease-in-out duration-700"
+      >
+        Logout
+      </a>
+
+      {% else %}
+      <a
+        href="{% url 'registro' %}"
+        class="inline-flex items-center text-white hover:text-red-700 hover:border-2 hover:border-red-700 bg-red-700 hover:bg-blue-300 font-semibold border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 transition ease-in-out duration-700"
+      >
+        Registro
+      </a>
+      <a
+        href="{% url 'login' %}"
         class="inline-flex items-center text-blue-300 hover:text-gray-900 hover:border-2 hover:border-gray-900 font-semibold bg-gray-900 hover:bg-blue-300 border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 transition ease-in-out duration-700"
       >
         Login
-        <svg
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          class="w-4 h-4 ml-1"
-          viewBox="0 0 24 24"
-        >
-          <path d="M5 12h14M12 5l7 7-7 7"></path>
-        </svg>
-      </button>
+      </a>
+      {% endif %}
     </div>
   </div>
 </header>

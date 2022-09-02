@@ -17,13 +17,25 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.views import (
+    LoginView,
+    LogoutView,
+    PasswordResetView,
+    PasswordResetDoneView,
+    PasswordResetConfirmView,
+    PasswordResetCompleteView,
+)
 
-from contas.views import HomepageView;
+from contas.views import HomepageView, CriarConta
+from contas.forms import MeuLoginForm
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomepageView.as_view(), name='homepage'),
-    path('blog/', include('postagens.urls', namespace='blog'))
+    path('blog/', include('postagens.urls', namespace='blog')),
+    path('login/', LoginView.as_view(authentication_form=MeuLoginForm), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('registro/', CriarConta.as_view(), name='registro'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
