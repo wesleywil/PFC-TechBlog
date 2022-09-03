@@ -1,0 +1,7 @@
+body {
+  background-image: url("../images/projeto/bg-image.jpg");
+  background-color: #11182796;
+  background-blend-mode: darken;
+  background-size: cover;
+  background-position: center;
+}

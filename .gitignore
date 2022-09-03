@@ -135,19 +135,16 @@ passo_a_passo.txt
 # Não Ignore
 !static/
 static/*
+!static/css
 !static/images/
 static/images/*
+!static/images/projeto/
+static/images/projeto/*
+!static/images/projeto/bg-image.jpg
+!static/images/projeto/blog-writing.svg
+!static/images/projeto/techlogo.svg
 !static/images/usuarios/
 static/images/usuarios/*
 !static/images/usuarios/predefinido/
 static/images/usuarios/predefinido/*
 !static/images/usuarios/predefinido/businessman.png
-
-!static/
-static/*
-!static/images/
-static/images/*
-!static/images/projeto/
-static/images/projeto/*
-!static/images/projeto/*
-

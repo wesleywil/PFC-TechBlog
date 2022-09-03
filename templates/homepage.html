@@ -1,9 +1,9 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}{% load static %} {% block content %}
 <div class="w-2/3 mx-auto">
   <div
-    class="flex gap-10 justify-center bg-gray-700 p-8 rounded-3xl border border-white"
+    class="flex gap-10 justify-center bg-gray-700/60 backdrop-blur-sm p-8 rounded-3xl border border-white"
   >
-    <div class="w-2/5 self-center">
+    <div class="xl:w-2/5 md:w-full self-center">
       <h1
         class="xl:text-6xl md:text-3xl text-white text-justify p-2 font-semibold"
       >
@@ -23,9 +23,9 @@
       </div>
     </div>
     <img
-      src="https://dummyimage.com/400x400"
+      src="{%  static 'images/projeto/blog-writing.svg' %}"
       alt="hero_image"
-      class="rounded-full p-2 border-2 border-white"
+      class="rounded-full p-2 w-1/2 xl:block md:hidden"
     />
   </div>
 </div>
