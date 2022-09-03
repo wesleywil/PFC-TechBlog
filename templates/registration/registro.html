@@ -1,30 +1,32 @@
 {% extends "base.html" %} {% block content %}
-<div class="bg-blue-300 mt-24 p-4 mx-auto rounded-xl border-2 border-white">
+<div
+  class="bg-gray-700 text-white mt-24 p-4 mx-auto rounded-xl border-2 border-white"
+>
   <h1
-    class="text-3xl font-bold uppercase p-2 text-center border-b-2 border-gray-900"
+    class="text-3xl font-bold uppercase p-2 text-center border-b-2 border-white"
   >
     Registro
   </h1>
-  <form method="POST" class="text-xl font-semibold">
+  <form method="POST" class="text-md font-semibold">
     <div>
       {% csrf_token %} {{form.as_p}}
       <div class="flex gap-2 justify-center mt-2">
         <button
-          class="bg-red-700 hover:bg-gray-900 text-white px-2 py-1 text-2xl rounded-xl transition ease-in-out duration-700"
+          class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 px-2 py-1 text-xl rounded-xl transition ease-in-out duration-700"
         >
           Registrar
         </button>
         <a
-          class="bg-gray-900 hover:bg-red-700 text-white px-2 py-1 text-2xl rounded-xl transition ease-in-out duration-700"
+          class="bg-blue-600 hover:bg-blue-800 text-white hover:text-gray-200 px-2 py-1 text-xl rounded-xl transition ease-in-out duration-700"
           href="{% url 'homepage' %}"
           >Cancelar</a
         >
       </div>
     </div>
   </form>
-  <div class="text-center mt-2 border-t-2 border-gray-900 pt-2">
+  <div class="text-center mt-2 border-t-2 border-white pt-2">
     <a
-      class="text-blue-600 hover:text-gray-900 font-semibold px-2 transition ease-in-out duration-700"
+      class="text-red-400 hover:text-red-600 font-semibold px-2 transition ease-in-out duration-700"
       href="{% url 'login' %}"
       >Já tem uma conta? Logue por aqui!</a
     >

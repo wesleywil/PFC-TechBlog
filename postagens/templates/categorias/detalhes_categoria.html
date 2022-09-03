@@ -1,10 +1,12 @@
 {% extends "base.html" %} {% block content %}
-<div class="bg-blue-300 text-black container mx-auto p-2 rounded-xl">
-  <h1 class="text-3xl font-semibold text-center">
+<div
+  class="bg-gray-700 text-white container mx-auto p-8 rounded-xl border border-white"
+>
+  <h1 class="text-3xl underline font-semibold text-center">
     Detalhes {{categoria.titulo}}
   </h1>
   <div class="p-2 m-2 text-center text-xl font-semibold flex flex-col">
-    <p>{{categoria.descricao}}</p>
+    <p class="text-gray-200">{{categoria.descricao}}</p>
     <div class="mt-2 p-2 flex gap-2 justify-center">
       {% if request.user.admin %}
       <a
