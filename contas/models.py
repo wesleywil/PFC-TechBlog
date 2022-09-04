@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 class Usuario(AbstractUser):
     admin = models.BooleanField(default=False)
-    foto = models.ImageField(upload_to="usuarios/", default="predefinido/businessman.png")
+    foto = models.ImageField(upload_to="usuarios/", default="usuarios/predefinido/businessman.png")
 
 class Perfil(models.Model):
     usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE)

@@ -1,0 +1,119 @@
+{% extends "base.html" %} {% block content %}
+<div
+  class="bg-gray-700/60 backdrop-blur-sm text-white container mx-auto p-4 mt-48 rounded-xl border border-white"
+>
+  <div class="flex flex-col">
+    <h1 class="text-center text-5xl mb-2 underline uppercase">Perfil</h1>
+    <div
+      class="flex gap-2 w-2/3 mx-auto justify-center bg-black/40 border border-white rounded-xl p-2"
+    >
+      <div class="flex flex-col text-center">
+        <img
+          class="w-52 rounded-xl"
+          src="{{request.user.foto.url}}"
+          alt="foto perfil"
+        />
+      </div>
+      <div class="flex flex-col gap-2 text-left p-2 mt-4">
+        <div class="flex gap-1">
+          <span>Username:</span>
+          <h3>{{request.user.username}}</h3>
+        </div>
+        <div class="flex gap-1">
+          <span>Desde:</span>
+          <h3>{{request.user.date_joined}}</h3>
+        </div>
+        <div class="flex gap-1">
+          <span>Nome:</span>
+          <h3>{{request.user.first_name}} {{request.user.last_name}}</h3>
+        </div>
+        <div class="flex gap-1">
+          <span>Email:</span>
+          <h3>{{request.user.email}}</h3>
+        </div>
+        <div>
+          <a
+            href="#"
+            class="float-left bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 px-2 py-1"
+            >Editar</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="p-2 m-2 w-full mx-auto border border-white rounded-xl">
+      <h1 class="text-center text-4xl underline uppercase">Minhas Postagens</h1>
+      <div class="flex justify-center gap-2 mt-4 font-semibold">
+        <a
+          href="{% url 'blog:criar_post' %}"
+          class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 px-2 py-1 rounded-xl"
+          >Nova Postagem</a
+        ><a
+          href="{% url 'perfil:minhas_postagens' %}"
+          class="border border-red-600 hover:border-red-800 hover:bg-red-800 text-red-600 hover:text-gray-200 px-2 py-1 rounded-xl"
+          >Ver Todas</a
+        >
+      </div>
+      <div class="text-center w-52 mx-auto">
+        <h2 class="text-2xl mb-4 uppercase">Quantidade</h2>
+        <span
+          class="border-4 border-red-600 w-26 rounded-full px-6 text-6xl font-bold"
+        >
+          {{contagem_posts}}
+        </span>
+      </div>
+      <div class="text-center mt-4">
+        <h1 class="text-2xl uppercase mb-2">Ultima postagem</h1>
+        {% comment %} Div Postagem {% endcomment %}
+        <div class="py-8 px-4 bg-black/40 border-2 border-white rounded-xl">
+          <div class="h-full flex items-start">
+            <div
+              class="w-12 flex-shrink-0 flex flex-col text-center leading-none"
+            >
+              <span class="text-white pb-2 mb-2 border-b-2 border-gray-200"
+                >{{ultimo_post.add_time | date:'M'}}</span
+              >
+              <span
+                class="font-medium text-lg text-white title-font leading-none"
+                >{{ultimo_post.add_time | date:'d'}}</span
+              >
+            </div>
+            <div class="flex-grow pl-6">
+              <h2
+                class="tracking-widest text-xs title-font font-medium text-red-600 mb-1"
+              >
+                TÍTULO
+              </h2>
+              <h1 class="title-font text-xl font-medium text-white mb-3">
+                {{ultimo_post.titulo}}
+              </h1>
+              <p class="leading-relaxed text-gray-200 mb-5">
+                {{ultimo_post.texto |slice:":200"}}...
+              </p>
+              <div class="mb-2">
+                <a
+                  class="text-red-400 hover:text-red-600 font-semibold px-2 py-1 rounded-md"
+                  href="{% url 'blog:detalhe_post' ultimo_post.pk %}"
+                  >Ler Mais</a
+                >
+              </div>
+              <div class="mb-2 border border-white"></div>
+              <a class="inline-flex items-center">
+                <span
+                  class="text-2xl font-bold bg-red-600 text-white px-3 py-1 rounded-full"
+                  >A</span
+                >
+                <span class="flex-grow flex flex-col pl-2">
+                  <span class="title-font font-medium text-white"
+                    >{{ultimo_post.dono}}</span
+                  >
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+        {% comment %} Div Postagem {% endcomment %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

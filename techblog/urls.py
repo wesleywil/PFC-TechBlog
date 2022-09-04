@@ -33,6 +33,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomepageView.as_view(), name='homepage'),
     path('blog/', include('postagens.urls', namespace='blog')),
+    path('perfil/', include('contas.urls', namespace='perfil')),
     path('login/', LoginView.as_view(authentication_form=MeuLoginForm), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('registro/', CriarConta.as_view(), name='registro'),

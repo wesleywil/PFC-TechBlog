@@ -40,7 +40,11 @@
       >
         Logout
       </a>
-
+      <a
+        href="{% url 'perfil:meu_perfil' %}"
+        class="inline-flex items-center border border-red-600 hover:border-red-800 hover:bg-red-800 text-red-600 hover:text-gray-200 font-semibold border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 transition ease-in-out duration-700"
+        >Perfil</a
+      >
       {% else %}
       <a
         href="{% url 'registro' %}"
