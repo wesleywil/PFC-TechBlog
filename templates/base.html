@@ -15,9 +15,7 @@
   </head>
   <body>
     {% include 'navbar.html' %}
-    <div class="flex items-center" style="height: 800px">
-      {% block content %} {% endblock content %}
-    </div>
+    <div>{% block content %} {% endblock content %}</div>
     {% include "scripts.html" %}
   </body>
 </html>

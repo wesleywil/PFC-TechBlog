@@ -1,32 +1,35 @@
 {% extends "base.html" %}{% load static %} {% block content %}
-<div class="w-2/3 mx-auto">
-  <div
-    class="flex gap-10 justify-center bg-gray-700/60 backdrop-blur-sm p-8 rounded-3xl border border-white"
-  >
-    <div class="xl:w-2/5 md:w-full self-center">
-      <h1
-        class="xl:text-6xl md:text-3xl text-white text-justify p-2 font-semibold"
-      >
-        <span class="font-bold text-red-600 text-7xl">T</span>ECH BLOG
-      </h1>
-      <h2 class="xl:text-xl md:text-md text-left p-2 pl-4 text-gray-200">
-        Esse blog é dedicado a ajudar você a ficar antenado as últimas
-        tecnologias do mercado. Sobre lançamento de novos frameworks, linguagens
-        de programação ou outras tecnologias, sacie agora sua curiosidade.
-      </h2>
-      <div class="flex p-2">
-        <button
-          class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 p-2 ml-2 text-xl font-semibold transition ease-in-out duration-700"
+<div class="flex items-center" style="height: 820px">
+  <div class="w-2/3 mx-auto">
+    <div
+      class="flex gap-10 justify-center bg-gray-700/60 backdrop-blur-sm p-8 rounded-3xl border border-white"
+    >
+      <div class="xl:w-2/5 md:w-full self-center">
+        <h1
+          class="xl:text-6xl md:text-3xl text-white text-justify p-2 font-semibold"
         >
-          Postagens
-        </button>
+          <span class="font-bold text-red-600 text-7xl">T</span>ECH BLOG
+        </h1>
+        <h2 class="xl:text-xl md:text-md text-left p-2 pl-4 text-gray-200">
+          Esse blog é dedicado a ajudar você a ficar antenado as últimas
+          tecnologias do mercado. Sobre lançamento de novos frameworks,
+          linguagens de programação ou outras tecnologias, sacie agora sua
+          curiosidade.
+        </h2>
+        <div class="flex p-2">
+          <button
+            class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 p-2 ml-2 text-xl font-semibold transition ease-in-out duration-700"
+          >
+            Postagens
+          </button>
+        </div>
       </div>
+      <img
+        src="{%  static 'images/projeto/blog-writing.svg' %}"
+        alt="hero_image"
+        class="rounded-full p-2 w-1/2 xl:block md:hidden"
+      />
     </div>
-    <img
-      src="{%  static 'images/projeto/blog-writing.svg' %}"
-      alt="hero_image"
-      class="rounded-full p-2 w-1/2 xl:block md:hidden"
-    />
   </div>
 </div>
 {% endblock content %}

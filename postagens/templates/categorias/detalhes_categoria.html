@@ -1,20 +1,22 @@
 {% extends "base.html" %} {% block content %}
-<div
-  class="bg-gray-700/60 backdrop-blur-sm text-white container mx-auto p-8 rounded-xl border border-white"
->
-  <h1 class="text-3xl underline font-semibold text-center">
-    Detalhes {{categoria.titulo}}
-  </h1>
-  <div class="p-2 m-2 text-center text-xl font-semibold flex flex-col">
-    <p class="text-gray-200">{{categoria.descricao}}</p>
-    <div class="mt-2 p-2 flex gap-2 justify-center">
-      {% if request.user.admin %}
-      <a
-        href="{% url 'blog:atualizar_categoria' categoria.pk %}"
-        class="text-xl bg-red-700 hover:bg-gray-900 text-white px-2 py-1 rounded-xl transition ease-in-out duration-700"
-        >Atualizar</a
-      >
-      {% else %} {% endif %}
+<div class="flex items-center" style="height: 800px">
+  <div
+    class="bg-gray-700/60 backdrop-blur-sm text-white container mx-auto p-8 rounded-xl border border-white"
+  >
+    <h1 class="text-3xl underline font-semibold text-center">
+      Detalhes {{categoria.titulo}}
+    </h1>
+    <div class="p-2 m-2 text-center text-xl font-semibold flex flex-col">
+      <p class="text-gray-200">{{categoria.descricao}}</p>
+      <div class="mt-2 p-2 flex gap-2 justify-center">
+        {% if request.user.admin %}
+        <a
+          href="{% url 'blog:atualizar_categoria' categoria.pk %}"
+          class="text-xl bg-red-700 hover:bg-gray-900 text-white px-2 py-1 rounded-xl transition ease-in-out duration-700"
+          >Atualizar</a
+        >
+        {% else %} {% endif %}
+      </div>
     </div>
   </div>
 </div>
