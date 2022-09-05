@@ -1,5 +1,6 @@
 from django.shortcuts import render, reverse
 from django.views import generic
+from django.core.mail import send_mail
 
 from .forms import CriarUsuarioCustomizadoForm
 
@@ -14,6 +15,17 @@ class CriarConta(generic.CreateView):
 
     def get_success_url(self):
         return reverse('login')
+    
+    def form_valid(self,form):
+        usuario = form.save(commit = False)
+        usuario.save()
+        send_mail(
+            subject="Conta no TechBlog Criada com Sucesso",
+            message="Bem vindo, agora você faz parte do maior blog de tecnologia do mundo",
+            from_email="admin@techblog_test.com",
+            recipient_list=[usuario.email]
+        )
+        return super(CriarConta, self).form_valid(form)
 
 class MeuPerfilView(generic.TemplateView):
     template_name = "meu_perfil.html"
