@@ -7,7 +7,11 @@
   >
     Registro
   </h1>
-  <form method="POST" class="text-md font-semibold">
+  <form
+    method="POST"
+    class="text-md font-semibold"
+    enctype="multipart/form-data"
+  >
     <div>
       {% csrf_token %} {{form.as_p}}
       <div class="flex gap-2 justify-center mt-2">

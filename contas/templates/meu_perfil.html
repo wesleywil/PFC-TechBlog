@@ -63,7 +63,7 @@
       </div>
       <div class="text-center mt-4">
         <h1 class="text-2xl uppercase mb-2">Ultima postagem</h1>
-        {% comment %} Div Postagem {% endcomment %}
+        {% comment %} Div Postagem {% endcomment %} {% if ultimo_post %}
         <div class="py-8 px-4 bg-black/40 border-2 border-white rounded-xl">
           <div class="h-full flex items-start">
             <div
@@ -111,7 +111,11 @@
             </div>
           </div>
         </div>
-        {% comment %} Div Postagem {% endcomment %}
+        {% else %}
+        <div class="py-8 px-4 bg-black/40 border-2 border-white rounded-xl">
+          <h1 class="text-5xl">Sem Postagens</h1>
+        </div>
+        {% endif %} {% comment %} Div Postagem {% endcomment %}
       </div>
     </div>
   </div>
