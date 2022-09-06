@@ -1,15 +1,18 @@
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, redirect
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
 
-from .forms import CriarUsuarioCustomizadoForm
+from .models import Usuario
+
+from .forms import CriarUsuarioCustomizadoForm, EditarUsuarioSimplesForm
 
 from postagens.models import Postagem
 
 class HomepageView(generic.TemplateView):
     template_name = "homepage.html"
 
-class CriarConta(generic.CreateView):
+class CriarContaView(generic.CreateView):
     template_name = "registration/registro.html"
     form_class = CriarUsuarioCustomizadoForm
 
@@ -25,9 +28,26 @@ class CriarConta(generic.CreateView):
             from_email="admin@techblog_test.com",
             recipient_list=[usuario.email]
         )
-        return super(CriarConta, self).form_valid(form)
+        return super(CriarContaView, self).form_valid(form)
 
-class MeuPerfilView(generic.TemplateView):
+def EditarContaView(request):
+    if request.user.is_authenticated:
+        usuario = Usuario.objects.get(pk = request.user.pk)
+        form = EditarUsuarioSimplesForm(instance = usuario)
+        context ={}
+        if request.method == "POST":
+            form = EditarUsuarioSimplesForm(request.POST, instance = usuario)
+            if form.is_valid():
+                form.save()
+                return redirect("/perfil/")
+        else:
+            context["usuario"] = usuario
+            context["form"] = form 
+            return render(request, "editar_perfil.html", context)
+
+    
+
+class MeuPerfilView(LoginRequiredMixin, generic.TemplateView):
     template_name = "meu_perfil.html"
 
     def get_context_data(self, **kwargs):
@@ -37,7 +57,7 @@ class MeuPerfilView(generic.TemplateView):
         data['contagem_posts'] = postagens.count()
         return data
 
-class MeusPostsView(generic.ListView):
+class MeusPostsView(LoginRequiredMixin, generic.ListView):
     template_name = "postagens/listar_postagens.html"
     context_object_name = "postagens"
     model = Postagem

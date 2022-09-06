@@ -1,0 +1,51 @@
+{% extends "base.html" %} {% block content %}
+<div class="xl:w-1/2 md:w-2/3 mx-auto mt-20 flex gap-2 justify-center">
+  <div
+    class="bg-gray-700/60 backdrop-blur-sm rounded-xl border border-white p-4 flex flex-col"
+  >
+    <img src="{{usuario.foto.url}}" alt="foto perfil" class="rounded-xl" />
+    <div class="text-xl pl-2 text-white">
+      <div class="flex gap-1">
+        <span>Username:</span>
+        <h3>{{usuario.username}}</h3>
+      </div>
+      <div class="flex gap-1">
+        <span>Desde:</span>
+        <h3>{{usuario.date_joined | date:'d/m/Y'}}</h3>
+      </div>
+      <div class="flex gap-1">
+        <span>Nome:</span>
+        <h3>{{usuario.first_name}} {{usuario.last_name}}</h3>
+      </div>
+      <div class="flex gap-1">
+        <span>Email:</span>
+        <h3>{{usuario.email}}</h3>
+      </div>
+    </div>
+  </div>
+  <form
+    method="POST"
+    class="bg-gray-700/60 backdrop-blur-sm rounded-xl border border-white p-2"
+  >
+    <h1
+      class="text-3xl font-semibold uppercase underline text-center m-2 text-white"
+    >
+      Editar Perfil
+    </h1>
+    {% csrf_token %}
+    <div class="p-2 text-white text-2xl font-semibold">{{form.as_p}}</div>
+    <div class="mt-2 flex gap-2 justify-center text-center">
+      <button
+        class="px-2 py-1 bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 rounded-xl text-xl transition ease-in-out duration-700"
+      >
+        Confirmar
+      </button>
+      <a
+        href="{% url 'blog:listar_categorias' %}"
+        class="px-2 py-1 bg-blue-600 hover:bg-blue-800 text-white hover:text-gray-200 rounded-xl text-xl transition ease-in-out duration-700"
+        >Cancelar</a
+      >
+    </div>
+  </form>
+</div>
+{% endblock content %}

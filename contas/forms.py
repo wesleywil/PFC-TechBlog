@@ -40,3 +40,23 @@ class CriarUsuarioCustomizadoForm(UserCreationForm):
         self.fields['foto'].widget.attrs.update({'class':'w-full border-2 bg-white/40  m-2 rounded-xl pl-1'})
         self.fields['password1'].widget.attrs.update({'class':'w-full border-2 bg-white/40  m-2 rounded-xl pl-1 '})
         self.fields['password2'].widget.attrs.update({'class':'w-full border-2 bg-white/40  m-2 rounded-xl pl-1'})
+
+class EditarUsuarioSimplesForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = (
+            'foto',
+            'username',
+            'email',
+            'first_name',
+            'last_name'
+        )
+        field_classes = {'username':UsernameField}
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update({'class':'w-full border-2 bg-white/40  m-2 rounded-xl pl-1'})
+        self.fields['email'].widget.attrs.update({'class':'w-full border-2 bg-white/40  m-2 rounded-xl pl-1'})
+        self.fields['first_name'].widget.attrs.update({'class':'w-full border-2 bg-white/40  m-2 rounded-xl pl-1'})
+        self.fields['last_name'].widget.attrs.update({'class':'w-full border-2 bg-white/40  m-2 rounded-xl pl-1'})
+        self.fields['foto'].widget.attrs.update({'class':'w-full border-2 bg-white/40  m-2 rounded-xl pl-1'})

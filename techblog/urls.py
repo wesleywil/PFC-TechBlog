@@ -26,7 +26,7 @@ from django.contrib.auth.views import (
     PasswordResetCompleteView,
 )
 
-from contas.views import HomepageView, CriarConta
+from contas.views import HomepageView, CriarContaView
 from contas.forms import MeuLoginForm
 
 urlpatterns = [
@@ -36,7 +36,7 @@ urlpatterns = [
     path('perfil/', include('contas.urls', namespace='perfil')),
     path('login/', LoginView.as_view(authentication_form=MeuLoginForm), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
-    path('registro/', CriarConta.as_view(), name='registro'),
+    path('registro/', CriarContaView.as_view(), name='registro'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
