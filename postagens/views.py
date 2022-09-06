@@ -55,7 +55,10 @@ class AtualizarPost(UserPassesTestMixin, generic.UpdateView):
 
     def test_func(self):
         return self.get_object().dono_id == self.request.user.pk
-
+    
+    def get_success_url(self):
+        return reverse("blog:listar_posts")
+    
 class ListarCategorias(generic.ListView):
     template_name = "categorias/listar_categorias.html"
     context_object_name = "categorias"
@@ -76,6 +79,9 @@ class CriarCategoria(AdminAndLoginRequired, generic.CreateView):
         data['botao'] = "Criar"
         return data
 
+    def get_success_url(self):
+        return reverse("blog:listar_categorias")
+
 class AtualizarCategoria(AdminAndLoginRequired, generic.UpdateView):
     template_name = "categorias/form_categoria.html"
     context_object_name = "categoria"
@@ -88,5 +94,8 @@ class AtualizarCategoria(AdminAndLoginRequired, generic.UpdateView):
         data['acao'] = "Atualizar categoria"
         data['botao'] = "Atualizar"
         return data
+
+    def get_success_url(self):
+        return reverse("blog:listar_categorias")
 
 
