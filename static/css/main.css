@@ -5,3 +5,13 @@ body {
   background-size: cover;
   background-position: center;
 }
+
+.posicionar_items {
+  height: 850px;
+}
+
+@media only screen and (max-height: 801px) {
+  .posicionar_items {
+    height: 650px;
+  }
+}
