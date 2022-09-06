@@ -1,13 +1,18 @@
 from django.shortcuts import render, reverse, redirect
 from django.views import generic
+from django.contrib.auth import update_session_auth_hash, get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.forms import PasswordChangeForm
 from django.core.mail import send_mail
 
 from .models import Usuario
 
-from .forms import CriarUsuarioCustomizadoForm, EditarUsuarioSimplesForm
+from .forms import CriarUsuarioCustomizadoForm, EditarUsuarioSimplesForm, TrocadeSenhaForm
 
 from postagens.models import Postagem
+
+User = get_user_model()
+
 
 class HomepageView(generic.TemplateView):
     template_name = "homepage.html"
@@ -44,6 +49,27 @@ def EditarContaView(request):
             context["usuario"] = usuario
             context["form"] = form 
             return render(request, "editar_perfil.html", context)
+
+class AtualizarSenhaContaView(LoginRequiredMixin, generic.FormView):
+    template_name = "mudar_senha.html"
+    form_class = TrocadeSenhaForm
+    model = User
+
+    def get_form_kwargs(self):
+        kwargs = super(AtualizarSenhaContaView, self).get_form_kwargs()
+        kwargs['user'] = self.request.user 
+        if self.request.method == 'POST':
+            kwargs['data'] = self.request.POST
+        return kwargs 
+
+    def form_valid(self, form):
+        form.save()
+        update_session_auth_hash(self.request, form.user)
+        return super(AtualizarSenhaContaView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('login')
+
 
     
 
