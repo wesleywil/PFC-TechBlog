@@ -1,7 +1,7 @@
-import http
 from django.shortcuts import render, redirect, reverse,HttpResponseRedirect
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.views import generic
+from django.db.models import Q
 
 from .models import Postagem, Categoria
 from .forms import PostagemModelForm, CategoriaModelForm
@@ -13,6 +13,15 @@ class ListarPosts(generic.ListView):
     template_name = "postagens/listar_postagens.html"
     context_object_name = "postagens"
     model = Postagem
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if(query == None):
+            queryset = Postagem.objects.all()
+            return queryset
+        else:
+            queryset = Postagem.objects.filter(Q(titulo__icontains = query))
+            return queryset
 
 class VerDetalhesPosts(generic.DetailView):
     template_name = "postagens/detalhes_postagem.html"
