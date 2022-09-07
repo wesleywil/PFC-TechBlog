@@ -19,6 +19,22 @@ class VerDetalhesPosts(generic.DetailView):
     context_object_name= "postagem"
     model = Postagem
 
+class ListarPostsPorCategoria(generic.ListView):
+    template_name = "postagens/listar_postagens.html"
+    context_object_name = "postagens"
+    model = Postagem
+
+    def get_context_data(self,**kwargs):
+        data = super().get_context_data(**kwargs)
+        data['mensagem'] =f"sobre {self.kwargs['titulo']}"
+        return data
+
+    def get_queryset(self):
+        categoria_titulo = self.kwargs['titulo']
+        postagens = Postagem.objects.filter(categorias__titulo = categoria_titulo)
+        return postagens
+
+
 class CriarPost(LoginRequiredMixin, generic.CreateView):
     template_name = "postagens/form_postagem.html"
     form_class = PostagemModelForm

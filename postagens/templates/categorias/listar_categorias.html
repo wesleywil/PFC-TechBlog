@@ -1,20 +1,43 @@
 {% extends "base.html" %} {% block content %}
-<div class="flex items-center posicionar_items m-2">
-  <div
-    class="bg-gray-700/60 backdrop-blur-sm text-white container mx-auto rounded-xl border border-white p-8"
-  >
-    <h1 class="text-5xl text-center font-bold uppercase underline">
-      Categorias
-    </h1>
-    <div class="flex flex-wrap justify-center gap-2 p-2 m-2">
-      {% for categoria in categorias %}
+<div class="flex gap-4 items-center m-2 posicionar_items">
+  {% if request.user.is_authenticated and request.user.admin %}
+  <div class="flex flex-col justify-center m-2 w-full">
+    <div
+      class="bg-gray-700/60 backdrop-blur-sm text-white w-2/3 mx-auto rounded-xl p-8 mt-4"
+    >
       <a
-        href="{%  url 'blog:detalhe_categoria' categoria.pk %}"
-        class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 text-xl rounded-full px-2 py-1 transition ease-in-out duration-700"
-        >{{categoria.titulo}}</a
+        href="{% url 'blog:criar_categoria' %}"
+        class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 px-2 py-1 text-2xl"
+        >Criar Categoria</a
       >
-      {% endfor %}
+      <div class="flex gap-2 justify-center">
+        {% for cts in categorias %}
+        <a
+          href="{% url 'blog:detalhe_categoria' cts.pk %}"
+          class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 text-xl px-2 py-1 rounded-3xl"
+          >{{cts.titulo}}</a
+        >
+        {% endfor %}
+      </div>
     </div>
+    {% else %}
+
+    <div
+      class="bg-gray-700/60 backdrop-blur-sm text-white w-2/3 mx-auto rounded-xl p-8 mt-4"
+    >
+      <h1 class="text-center mb-2 text-3xl underline uppercase">Categorias</h1>
+      <div class="flex gap-2 justify-center">
+        {% for cts in categorias %}
+
+        <a
+          href="{% url 'blog:listar_posts_por_categoria' cts.titulo %}"
+          class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 text-xl px-2 py-1 rounded-3xl"
+          >{{cts.titulo}}</a
+        >
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
   </div>
 </div>
 {% endblock content %}
