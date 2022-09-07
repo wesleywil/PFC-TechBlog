@@ -41,7 +41,7 @@ def EditarContaView(request):
         form = EditarUsuarioSimplesForm(instance = usuario)
         context ={}
         if request.method == "POST":
-            form = EditarUsuarioSimplesForm(request.POST, instance = usuario)
+            form = EditarUsuarioSimplesForm(request.POST, request.FILES, instance = usuario)
             if form.is_valid():
                 form.save()
                 return redirect("/perfil/")
