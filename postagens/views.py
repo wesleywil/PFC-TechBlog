@@ -56,9 +56,13 @@ class CriarPost(LoginRequiredMixin, generic.CreateView):
     
     def form_valid(self, form):
         perfil = Perfil.objects.get(pk = self.request.user.pk)
+        categorias = form.cleaned_data['categorias']
         obj = form.save(commit=False)
         obj.dono = perfil
         obj.save()
+        lista_categorias = Categoria.objects.filter(pk__in = categorias)
+        for ct in lista_categorias:
+            obj.categorias.add(ct)
         return HttpResponseRedirect(self.get_success_url())
 
     def get_success_url(self):
