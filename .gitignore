@@ -148,3 +148,7 @@ static/images/usuarios/*
 !static/images/usuarios/predefinido/
 static/images/usuarios/predefinido/*
 !static/images/usuarios/predefinido/businessman.png
+
+
+# CollectStatic
+static_root

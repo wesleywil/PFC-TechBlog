@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import (handler400, handler403,handler404, handler500)
 from django.contrib.auth.views import (
     LoginView,
     LogoutView,
@@ -29,6 +30,8 @@ from django.contrib.auth.views import (
 from contas.views import HomepageView, CriarContaView
 from contas.forms import MeuLoginForm
 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomepageView.as_view(), name='homepage'),
@@ -38,6 +41,11 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
     path('registro/', CriarContaView.as_view(), name='registro'),
 ]
+
+handler404 = "contas.views.pagina_nao_encontrada_view"
+handler400 = "contas.views.pagina_requisicao_negadada"
+handler403 = "contas.views.pagina_permissao_negada_view"
+handler500 = "contas.views.pagina_error_view"
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

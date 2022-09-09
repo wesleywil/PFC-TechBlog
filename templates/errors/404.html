@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block content %}
+<div
+  class="bg-gray-700/60 backdrop-blur-sm text-white container mx-auto p-2 mt-20 rounded-xl border border-white"
+>
+  <div class="flex flex-col gap-2 text-center">
+    <h1 class="text-center text-5xl text-white">Pagina não encontrada</h1>
+    <h1 class="text-center text-5xl text-white">404</h1>
+    <div class="flex justify-center">
+      <a
+        href="{% url 'blog:listar_posts' %}"
+        class="w-96 bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 px-2 py-1 text-4xl rounded-xl"
+        >Postagens do Blog</a
+      >
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

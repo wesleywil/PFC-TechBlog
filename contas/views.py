@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse, redirect
+from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.views import generic
 from django.contrib.auth import update_session_auth_hash, get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -12,6 +12,7 @@ from .forms import CriarUsuarioCustomizadoForm, EditarUsuarioSimplesForm, Trocad
 from postagens.models import Postagem
 
 User = get_user_model()
+
 
 
 class HomepageView(generic.TemplateView):
@@ -94,3 +95,16 @@ class MeusPostsView(LoginRequiredMixin, generic.ListView):
         data['postagens'] = postagens
         data['mensagem'] = f"do {self.request.user.username}"
         return data
+
+
+def pagina_nao_encontrada_view(request, exception):
+    return render(request, 'errors/404.html', exception)
+
+def pagina_error_view(request, exception=None):
+    return render(request, "errors/500.html",{})
+
+def pagina_permissao_negada_view(request, exception=None):
+    return render(request, "errors/403.html", {})
+
+def pagina_requisicao_negadada(request, exception=None):
+    return render(request, "errors/400.html",{})
