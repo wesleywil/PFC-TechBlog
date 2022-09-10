@@ -1,43 +1,43 @@
 {% extends "base.html" %} {% block content %}
-<div class="flex gap-4 items-center m-2 posicionar_items">
+<div
+  class="flex flex-col gap-4 items-center justify-center m-2 posicionar_items"
+>
+  <h1
+    class="text-white text-6xl font-bold underline uppercase bg-gray-700/60 p-2 px-4 backdrop-blur-sm"
+  >
+    Categorias
+  </h1>
   {% if request.user.is_authenticated and request.user.admin %}
-  <div class="flex flex-col justify-center m-2 w-full">
-    <div
-      class="bg-gray-700/60 backdrop-blur-sm text-white w-2/3 mx-auto rounded-xl p-8 mt-4"
+  <div>
+    <a
+      href="{% url 'blog:criar_categoria' %}"
+      class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 px-2 py-1 text-2xl"
+      >Nova Categoria</a
     >
-      <a
-        href="{% url 'blog:criar_categoria' %}"
-        class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 px-2 py-1 text-2xl"
-        >Criar Categoria</a
-      >
-      <div class="flex gap-2 justify-center">
-        {% for cts in categorias %}
-        <a
-          href="{% url 'blog:detalhe_categoria' cts.pk %}"
-          class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 text-xl px-2 py-1 rounded-3xl"
-          >{{cts.titulo}}</a
-        >
-        {% endfor %}
-      </div>
-    </div>
-    {% else %}
+  </div>
+  {% else %} {% endif %}
 
+  <div class="flex flex-wrap gap-2 justify-center">
+    {% for cts in categorias %}
     <div
-      class="bg-gray-700/60 backdrop-blur-sm text-white w-2/3 mx-auto rounded-xl p-8 mt-4"
+      class="bg-gray-700/60 backdrop-blur-sm text-white rounded-xl p-2 mt-4 border border-white"
     >
-      <h1 class="text-center mb-2 text-3xl underline uppercase">Categorias</h1>
-      <div class="flex gap-2 justify-center">
-        {% for cts in categorias %}
-
+      <h1 class="text-2xl font-semibold underline">{{cts.titulo}}</h1>
+      <p>{{cts.descricao | slice:":50"}}...</p>
+      <div class="flex gap-2 mt-2">
         <a
           href="{% url 'blog:listar_posts_por_categoria' cts.titulo %}"
-          class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 text-xl px-2 py-1 rounded-3xl"
-          >{{cts.titulo}}</a
+          class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 px-2 py-1 rounded-sm"
+          >Posts</a
         >
-        {% endfor %}
+        <a
+          href="{% url 'blog:detalhe_categoria' cts.pk %}"
+          class="bg-blue-600 hover:bg-blue-800 text-white hover:text-gray-200 px-2 py-1 rounded-sm"
+          >Detalhes</a
+        >
       </div>
     </div>
-    {% endif %}
+    {% endfor %}
   </div>
 </div>
 {% endblock content %}
