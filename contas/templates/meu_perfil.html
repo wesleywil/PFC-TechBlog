@@ -5,11 +5,11 @@
   <div class="flex flex-col">
     <h1 class="text-center text-5xl mb-2 underline uppercase">Perfil</h1>
     <div
-      class="flex gap-2 xl:w-1/2 md:3/4 mx-auto justify-center bg-black/40 border border-white rounded-xl p-2"
+      class="flex gap-2 mx-auto justify-center bg-black/40 border border-white rounded-xl p-2"
     >
       <div class="flex flex-col text-center">
         <img
-          class="w-52 rounded-xl"
+          class="rounded-xl foto_perfil"
           src="{{request.user.foto.url}}"
           alt="foto perfil"
         />
@@ -21,7 +21,7 @@
         </div>
         <div class="flex gap-1">
           <span>Desde:</span>
-          <h3>{{request.user.date_joined}}</h3>
+          <h3>{{request.user.date_joined | date:"d/m/Y"}}</h3>
         </div>
         <div class="flex gap-1">
           <span>Nome:</span>
