@@ -50,6 +50,8 @@ def EditarContaView(request):
             context["usuario"] = usuario
             context["form"] = form 
             return render(request, "editar_perfil.html", context)
+    else:
+        return redirect("/login/")
 
 class AtualizarSenhaContaView(LoginRequiredMixin, generic.FormView):
     template_name = "mudar_senha.html"
