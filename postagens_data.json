@@ -1,0 +1,28 @@
+{
+  "postagens": [
+    {
+      "titulo": "O que exatamente voce pode fazer com Python? Aqui 3 principais aplicações em python.",
+      "texto": "O primeiro é desenvolvimento web, com a popularização de frameworks como Flask e Django eles nos ajudam a criar projetos de forma bem mais simples usando python como linguagem back-end e no front-end pode-se facilmente implementar outros frameworks como reactJs..."
+    },
+    {
+      "titulo": "Javascript: O que é um Callback?",
+      "texto": "De forma simples: Um Callback é uma função que pode ser executada depois que outra função termina de executar.De forma mais complexa: Em javascript, funções são objetos. Por causa disso funções podem receber outras funções como argumentos, e podem ser retornadas por outras funções, e qualquer função que é chamada como um argumento recebe o nome de callback function."
+    },
+    {
+      "titulo": "Construindo uma API REST em 30 minutos com Django REST Framework",
+      "texto": "Antes de começarmos o código, é importante considerar o porquê você gostaria de construir uma API. Se alguém tivesse me explicado esses conceitos antes de eu começar minha carreira como um desenvolvedor, as coisas teriam sido muito mais fáceis."
+    },
+    {
+      "titulo": "Perguntas frequentes: Perguntas e Respostas de uma Entrevista sobre REACT JS",
+      "texto": "React cria um virtual DOM. Quando o estado de um component muda, ele roda um algoritmo que identifica o que mudou no virtual DOM. O segundo passo é reconciliar o que devera ser mudado no DOM com os resultados do algoritmo."
+    },
+    {
+      "titulo": "'XSS Vulnerability' é a mais comum vulnerabilidade de aplicações REACT.js",
+      "texto": "O pessoal está tão atraído pelo uso do REACT.js devido a seus muitos benefícios de renderizar aplicações single-page transformando os projetos em belas aplicações interativas que esquecem de algo tão importante quanto a beleza ou interatividade de uma aplicação que é a segurança..."
+    },
+    {
+      "titulo": "Top 5 recursos de Typescript que você deveria dominar.",
+      "texto": "A influência do Typescript está crescendo dia após dia. É agora uma das principais ferramentas requisitadas pelas empresas. Os benefícios do Typescript não são exageros. Porem é importante saber e entender todas as características dessa linguagem que é uma evolução do Javascript tem a nos oferecer."
+    }
+  ]
+}
