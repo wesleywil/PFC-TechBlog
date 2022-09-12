@@ -27,7 +27,7 @@ from django.contrib.auth.views import (
     PasswordResetCompleteView,
 )
 
-from contas.views import HomepageView, CriarContaView
+from contas.views import HomepageView, CriarContaView,AjudaView
 from contas.forms import MeuLoginForm
 
 
@@ -35,6 +35,7 @@ from contas.forms import MeuLoginForm
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomepageView.as_view(), name='homepage'),
+    path('ajuda/', AjudaView.as_view(), name="ajuda"),
     path('blog/', include('postagens.urls', namespace='blog')),
     path('perfil/', include('contas.urls', namespace='perfil')),
     path('login/', LoginView.as_view(authentication_form=MeuLoginForm), name='login'),

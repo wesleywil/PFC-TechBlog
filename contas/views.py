@@ -18,6 +18,9 @@ User = get_user_model()
 class HomepageView(generic.TemplateView):
     template_name = "homepage.html"
 
+class AjudaView(generic.TemplateView):
+    template_name = "ajuda.html"
+
 class CriarContaView(generic.CreateView):
     template_name = "registration/registro.html"
     form_class = CriarUsuarioCustomizadoForm

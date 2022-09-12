@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block content %}
+<div class="flex items-center posicionar_items">
+  <div
+    class="bg-gray-700/60 mx-auto backdrop-blur-sm p-8 m-2 rounded-3xl border border-white"
+  >
+    <h1 class="text-white text-5xl underline uppercase text-center mb-2">
+      Ajuda
+    </h1>
+    <div class="text-white text-xl">
+      <div class="ml-4">
+        <li>Crie uma conta caso queira criar seus proprios posts</li>
+        <li>
+          Para editar seus proprios posts, navegue até o seu perfil e clique em
+          "ver todas", apos isso escolha um post, clique em ler mais e depois em
+          editar
+        </li>
+        <li>
+          Se seu post abrange sobre algum assunto que não contenha a categoria
+          registrada no nosso blog entre em contato com o administrador via
+          e-mail
+        </li>
+      </div>
+      <h1 class="text-white text-5xl underline uppercase text-center mb-2">
+        REGRAS
+      </h1>
+      <div class="ml-4">
+        <li>
+          Os posts deverão ter como tema tecnologia ex: Reactjs, Javascript,
+          Celulares, Computadores e etc...
+        </li>
+        <li>
+          É completamente proibido conteudo ofensivo ex: postagens racistas,
+          homofobicas ou qualquer discurso de ódio
+        </li>
+        <li>Proibido spam(repetição) do mesmo conteudo</li>
+      </div>
+      <div class="mt-2 flex gap-2 justify-center">
+        <a
+          href="{% url 'homepage' %}"
+          class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 px-2 py-1 text-2xl rounded-xl"
+          >Voltar a Pagina Principal</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
