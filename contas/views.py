@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse, redirect, get_object_or_404
+from django.shortcuts import render, reverse, redirect
 from django.views import generic
 from django.contrib.auth import update_session_auth_hash, get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -110,6 +110,10 @@ def pagina_error_view(request, exception=None):
 
 def pagina_permissao_negada_view(request, exception=None):
     return render(request, "errors/403.html", {})
+
+def pagina_error_csrf_view(request, reason=""):
+    ctx = {'message': 'Voce não tem permissão para realizar está ação'}
+    return render(request, 'errors/403_csrf.html', ctx)
 
 def pagina_requisicao_negadada(request, exception=None):
     return render(request, "errors/400.html",{})
