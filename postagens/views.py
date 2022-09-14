@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse,HttpResponseRedirect
+from django.core.exceptions import PermissionDenied
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.views import generic
 from django.db.models import Q
@@ -87,6 +88,24 @@ class AtualizarPost(UserPassesTestMixin, generic.UpdateView):
     
     def get_success_url(self):
         return reverse("blog:listar_posts")
+
+class DeletarPost(LoginRequiredMixin, generic.DeleteView):
+    template_name = "postagens/deletar_postagem.html"
+    model = Postagem
+    queryset = Postagem.objects.all()
+
+    def get_object(self, queryset=None):
+        """Verifica se é um admin ou se é o dono do post."""
+        obj = super(DeletarPost, self).get_object()
+        if self.request.user.admin:
+            return obj
+        else:
+            if not obj.dono.pk == self.request.user.pk:
+                raise PermissionDenied()
+            else:
+                return obj
+    def get_success_url(self):
+        return reverse("blog:listar_posts")
     
 class ListarCategorias(generic.ListView):
     template_name = "categorias/listar_categorias.html"
@@ -127,4 +146,7 @@ class AtualizarCategoria(AdminAndLoginRequired, generic.UpdateView):
     def get_success_url(self):
         return reverse("blog:listar_categorias")
 
-
+class DeletarCategoria(AdminAndLoginRequired, generic.DeleteView):
+    template_name = "categorias/deletar_categoria.html"
+    model = Categoria
+    queryset = Categoria.objects.all()
