@@ -8,7 +8,7 @@ from .models import Postagem, Categoria
 from .forms import PostagemModelForm, CategoriaModelForm
 
 from contas.models import Perfil
-from contas.mixins import AdminAndLoginRequired
+from contas.mixins import AdminAndLoginRequired,AdminOrOwnerRequired
 
 class ListarPosts(generic.ListView):
     template_name = "postagens/listar_postagens.html"
@@ -70,7 +70,7 @@ class CriarPost(LoginRequiredMixin, generic.CreateView):
         return reverse("blog:listar_posts")
     
 
-class AtualizarPost(UserPassesTestMixin, generic.UpdateView):
+class AtualizarPost(AdminOrOwnerRequired, generic.UpdateView):
     template_name = "postagens/form_postagem.html"
     context_object_name = "postagem"
     form_class = PostagemModelForm
@@ -82,9 +82,6 @@ class AtualizarPost(UserPassesTestMixin, generic.UpdateView):
         data['acao'] = "Atualizar Postagem"
         data['botao'] = "Atualizar"
         return data
-
-    def test_func(self):
-        return self.get_object().dono_id == self.request.user.pk
     
     def get_success_url(self):
         return reverse("blog:listar_posts")
