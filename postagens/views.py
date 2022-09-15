@@ -147,3 +147,6 @@ class DeletarCategoria(AdminAndLoginRequired, generic.DeleteView):
     template_name = "categorias/deletar_categoria.html"
     model = Categoria
     queryset = Categoria.objects.all()
+
+    def get_success_url(self):
+        return reverse("blog:listar_categorias")

@@ -74,7 +74,7 @@ class AtualizarSenhaContaView(LoginRequiredMixin, generic.FormView):
         return super(AtualizarSenhaContaView, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse('login')
+        return reverse('meu_perfil')
 
 
     
