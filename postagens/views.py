@@ -59,7 +59,7 @@ class CriarPost(LoginRequiredMixin, generic.CreateView):
         perfil = Perfil.objects.get(pk = self.request.user.pk)
         categorias = form.cleaned_data['categorias']
         obj = form.save(commit=False)
-        obj.dono = perfil
+        obj.autor = perfil
         obj.save()
         lista_categorias = Categoria.objects.filter(pk__in = categorias)
         for ct in lista_categorias:
@@ -92,12 +92,12 @@ class DeletarPost(LoginRequiredMixin, generic.DeleteView):
     queryset = Postagem.objects.all()
 
     def get_object(self, queryset=None):
-        """Verifica se é um admin ou se é o dono do post."""
+        """Verifica se é um admin ou se é o autor do post."""
         obj = super(DeletarPost, self).get_object()
         if self.request.user.admin:
             return obj
         else:
-            if not obj.dono.pk == self.request.user.pk:
+            if not obj.autor.pk == self.request.user.pk:
                 raise PermissionDenied()
             else:
                 return obj

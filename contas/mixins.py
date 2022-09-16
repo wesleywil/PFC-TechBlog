@@ -10,10 +10,10 @@ class AdminAndLoginRequired(AccessMixin):
         return super().dispatch(request, *args, **kwargs)
 
 class AdminOrOwnerRequired(AccessMixin):
-    """ Verifica se o usuario é um admininstrador ou se é o dono do post """
+    """ Verifica se o usuario é um admininstrador ou se é o autor do post """
     def dispatch(self, request, *args, **kwargs):
-        if request.user.admin or self.get_object().dono_id == request.user.id:
+        if request.user.admin or self.get_object().autor_id == request.user.id:
             return super().dispatch(request, *args, **kwargs)
         else:
-            context = {"message":"Ops! Está ação é apenas para administradores ou o dono do post"}
+            context = {"message":"Ops! Está ação é apenas para administradores ou o autor do post"}
             return render(request, "homepage.html", context)

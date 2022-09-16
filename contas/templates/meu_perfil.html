@@ -78,11 +78,11 @@
               class="w-12 flex-shrink-0 flex flex-col text-center leading-none"
             >
               <span class="text-white pb-2 mb-2 border-b-2 border-gray-200"
-                >{{ultimo_post.add_time | date:'M'}}</span
+                >{{ultimo_post.data_adicao | date:'M'}}</span
               >
               <span
                 class="font-medium text-lg text-white title-font leading-none"
-                >{{ultimo_post.add_time | date:'d'}}</span
+                >{{ultimo_post.data_adicao | date:'d'}}</span
               >
             </div>
             <div class="flex-grow pl-6">
@@ -112,7 +112,7 @@
                 >
                 <span class="flex-grow flex flex-col pl-2">
                   <span class="title-font font-medium text-white"
-                    >{{ultimo_post.dono}}</span
+                    >{{ultimo_post.autor}}</span
                   >
                 </span>
               </a>

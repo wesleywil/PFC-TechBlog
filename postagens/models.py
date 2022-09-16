@@ -3,10 +3,10 @@ from django.db import models
 from contas.models import Perfil
 
 class Postagem(models.Model):
-    dono = models.ForeignKey(Perfil, on_delete=models.CASCADE)
+    autor = models.ForeignKey(Perfil, on_delete=models.CASCADE)
     titulo = models.CharField(max_length=100)
     texto = models.TextField()
-    add_time = models.DateField(auto_now_add=True)
+    data_adicao = models.DateField(auto_now_add=True)
     categorias = models.ManyToManyField("Categoria", blank=True)
 
     class Meta:

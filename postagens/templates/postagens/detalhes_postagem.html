@@ -12,10 +12,10 @@
       <div class="flex gap-2 justify-center">
         <div class="w-12 flex-shrink-0 flex flex-col text-center leading-none">
           <span class="text-white pb-2 mb-2 border-b-2 border-white"
-            >{{postagem.add_time | date:'M'}}</span
+            >{{postagem.data_adicao | date:'M'}}</span
           >
           <span class="font-medium text-lg text-white title-font leading-none"
-            >{{postagem.add_time | date:'d'}}</span
+            >{{postagem.data_adicao | date:'d'}}</span
           >
         </div>
         <div class="p-2">
@@ -35,7 +35,7 @@
               class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 font-semibold rounded-xl text-2xl px-2 py-1 transition ease-in-out duration-700"
               >Deletar</a
             >
-            {% else %} {% if postagem.dono.usuario.pk == request.user.id %}
+            {% else %} {% if postagem.autor.usuario.pk == request.user.id %}
             <a
               href="{%  url 'blog:atualizar_post' postagem.pk %}"
               class="bg-blue-600 hover:bg-blue-800 text-white hover:text-gray-200 font-semibold rounded-xl text-2xl px-2 py-1 transition ease-in-out duration-700"

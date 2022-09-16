@@ -17,11 +17,11 @@
       <div class="h-full flex items-start">
         <div class="w-12 flex-shrink-0 flex flex-col text-center leading-none">
           <span class="text-white pb-2 mb-2 border-b-2 border-gray-200"
-            >{{post.add_time | date:'M'}}</span
+            >{{post.data_adicao | date:'M'}}</span
           >
           <span
             class="font-medium text-lg text-white title-font leading-none"
-            >{{post.add_time | date:'d'}}</span
+            >{{post.data_adicao | date:'d'}}</span
           >
         </div>
         <div class="flex-grow pl-6">
@@ -44,7 +44,7 @@
           <span class="text-2xl font-bold bg-red-600 text-white px-3 py-1 rounded-full ">A</span>
             <span class="flex-grow flex flex-col pl-2">
               <span class="title-font font-medium text-white"
-                >{{post.dono}}</span
+                >{{post.autor}}</span
               >
             </span>
           </a>
