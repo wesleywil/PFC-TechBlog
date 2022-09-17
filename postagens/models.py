@@ -1,10 +1,10 @@
 from django.db import models
-from contas.models import Perfil
+from contas.models import Usuario
 
 from PIL import Image
 
 class Postagem(models.Model):
-    autor = models.ForeignKey(Perfil, on_delete=models.CASCADE)
+    autor = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     foto = models.ImageField(upload_to="postagens/", default="postagens/predefinido/default.png")
     titulo = models.CharField(max_length=100)
     texto = models.TextField()

@@ -7,7 +7,7 @@ from django.db.models import Q
 from .models import Postagem, Categoria
 from .forms import PostagemModelForm, CategoriaModelForm
 
-from contas.models import Perfil
+from contas.models import Usuario
 from contas.mixins import AdminAndLoginRequired,AdminOrOwnerRequired
 
 class ListarPosts(generic.ListView):
@@ -56,7 +56,7 @@ class CriarPost(LoginRequiredMixin, generic.CreateView):
         return data
     
     def form_valid(self, form):
-        perfil = Perfil.objects.get(pk = self.request.user.pk)
+        perfil = Usuario.objects.get(pk = self.request.user.pk)
         categorias = form.cleaned_data['categorias']
         obj = form.save(commit=False)
         obj.autor = perfil
