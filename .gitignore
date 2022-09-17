@@ -132,22 +132,24 @@ postagens/migrations
 # Steps File
 passo_a_passo.txt
 
-# Não Ignore
+# Não Ignore(GITDONOTIGNORE)
 !static/
 static/*
-!static/css
 !static/images/
 static/images/*
 !static/images/projeto/
 static/images/projeto/*
-!static/images/projeto/bg-image.jpg
-!static/images/projeto/blog-writing.svg
-!static/images/projeto/techlogo.svg
+!static/images/projeto/*
 !static/images/usuarios/
 static/images/usuarios/*
+!static/images/postagens/
+static/images/postagens/*
 !static/images/usuarios/predefinido/
 static/images/usuarios/predefinido/*
-!static/images/usuarios/predefinido/businessman.png
+!static/images/postagens/predefinido/
+static/images/postagens/predefinido/*
+!static/images/usuarios/predefinido/*
+!static/images/postagens/predefinido/*
 
 
 # CollectStatic
