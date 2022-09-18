@@ -20,3 +20,8 @@ body {
 .foto_perfil {
   width: 200px;
 }
+
+.foto_postagem {
+  width: 800px;
+  height: 400px;
+}
