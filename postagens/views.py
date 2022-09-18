@@ -14,6 +14,7 @@ class ListarPosts(generic.ListView):
     template_name = "postagens/listar_postagens.html"
     context_object_name = "postagens"
     model = Postagem
+    paginate_by = 2
 
     def get_queryset(self):
         query = self.request.GET.get('q')
