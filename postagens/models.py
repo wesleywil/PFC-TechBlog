@@ -14,6 +14,7 @@ class Postagem(models.Model):
     class Meta:
         verbose_name = "postagem"
         verbose_name_plural = "postagens"
+        ordering = ["-data_adicao"]
 
     def save(self, *args, **kwargs):
         super().save() # salva a imagem primeiro
