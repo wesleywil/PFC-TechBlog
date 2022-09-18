@@ -84,7 +84,7 @@ class MeuPerfilView(LoginRequiredMixin, generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
-        postagens = Postagem.objects.filter(autor__usuario__id = self.request.user.id)
+        postagens = Postagem.objects.filter(autor__id = self.request.user.id)
         data['ultimo_post'] = postagens.first()
         data['contagem_posts'] = postagens.count()
         return data
@@ -96,7 +96,7 @@ class MeusPostsView(LoginRequiredMixin, generic.ListView):
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
-        postagens = Postagem.objects.filter(autor__usuario__id = self.request.user.id)
+        postagens = Postagem.objects.filter(autor__id = self.request.user.id)
         data['postagens'] = postagens
         data['mensagem'] = f"do {self.request.user.username}"
         return data
