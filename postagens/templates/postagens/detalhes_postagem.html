@@ -1,68 +1,69 @@
 {% extends "base.html" %} {% block content %}
 <div
-  class="bg-gray-700/60 backdrop-blur-sm text-white container mx-auto p-2 mt-20 rounded-xl border border-white"
+  class="bg-gray-700/60 backdrop-blur-sm text-white mx-auto p-2 mt-20 rounded-xl border border-white"
+  style="width: 800px"
 >
-  <div class="p-2 m-2 text-center text-xl flex gap-2 justify-center">
-    <div>
-      <img
-        class="mx-auto mb-2 rounded-xl foto_postagem"
-        src="{{postagem.foto.url}}"
-        alt="imagem post"
-      />
-      <div class="flex gap-2 justify-center">
-        <div class="w-12 flex-shrink-0 flex flex-col text-center leading-none">
-          <span class="text-white pb-2 mb-2 border-b-2 border-white"
-            >{{postagem.data_adicao | date:'M'}}</span
+  <div class="flex flex-col gap-2">
+    <img
+      src="{{postagem.foto.url}}"
+      alt="Foto do Post"
+      class="rounded-xl foto_postagem"
+    />
+    {% comment %} Infos {% endcomment %}
+    <div class="flex flex-col gap-2 ml-2">
+      {% comment %} Info Autor e Data {% endcomment %}
+      <div class="flex gap-2 items-center">
+        <img
+          src="{{postagem.autor.foto.url}}"
+          alt="foto do autor"
+          class="rounded-full w-20"
+        />
+        <div class="flex flex-col">
+          <span>{{postagem.autor.username}}</span>
+          <span class="text-sm"
+            >Postagem de {{postagem.data_adicao | date:'d/m/y'}}</span
           >
-          <span class="font-medium text-lg text-white title-font leading-none"
-            >{{postagem.data_adicao | date:'d'}}</span
-          >
         </div>
-        <div class="p-2">
-          <h1 class="font-bold text-white text-3xl mb-2">
-            {{postagem.titulo}}
-          </h1>
-          <p class="p-2 text-gray-200 text-center">{{postagem.texto}}</p>
-          <div class="mt-2">
-            {% if request.user.admin %}
-            <a
-              href="{%  url 'blog:atualizar_post' postagem.pk %}"
-              class="bg-blue-600 hover:bg-blue-800 text-white hover:text-gray-200 font-semibold rounded-xl text-2xl px-2 py-1 transition ease-in-out duration-700"
-              >Editar</a
-            >
-            <a
-              href="{%  url 'blog:deletar_post' postagem.pk %}"
-              class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 font-semibold rounded-xl text-2xl px-2 py-1 transition ease-in-out duration-700"
-              >Deletar</a
-            >
-            {% else %} {% if postagem.autor.usuario.pk == request.user.id %}
-            <a
-              href="{%  url 'blog:atualizar_post' postagem.pk %}"
-              class="bg-blue-600 hover:bg-blue-800 text-white hover:text-gray-200 font-semibold rounded-xl text-2xl px-2 py-1 transition ease-in-out duration-700"
-              >Editar</a
-            >
-            <a
-              href="{%  url 'blog:deletar_post' postagem.pk %}"
-              class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 font-semibold rounded-xl text-2xl px-2 py-1 transition ease-in-out duration-700"
-              >Deletar</a
-            >
-            {% else %} {% endif %} {% endif %}
-          </div>
-        </div>
-        <div class="border-l-2 p-2 flex pl-2 flex-col">
-          <h1 class="text-xl font-semibold mb-2 text-center">Categorias</h1>
-          <div class="flex flex-wrap">
-            {% for cts in postagem.categorias.all %}
-            <div class="m-1 text-base">
-              <a
-                href="{% url 'blog:detalhe_categoria' cts.pk %}"
-                class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 px-2 py-1 rounded-full"
-                >{{cts.titulo}}</a
-              >
-            </div>
-            {% endfor %}
-          </div>
-        </div>
+      </div>
+      {% comment %} Categorias {% endcomment %}
+    </div>
+    <h1 class="ml-4 text-4xl font-bold">{{postagem.titulo}}</h1>
+    <div class="flex gap-2 ml-4">
+      {% for cts in postagem.categorias.all %}
+      <a
+        href="{% url 'blog:detalhe_categoria' cts.pk %}"
+        class="bg-red-300 hover:bg-red-600 text-gray-600 hover:text-gray-200 font-semibold px-1 rounded transition ease-in-out duration-700"
+        >{{cts.titulo}}</a
+      >
+      {% endfor %}
+    </div>
+    <div class="text-xl ml-4">
+      <p>{{postagem.texto}}</p>
+      {% comment %} Validacao Visual para Editar e Apagar {% endcomment %}
+      <div class="flex gap-2 justify-center mt-2">
+        {% if request.user.admin %}
+        <a
+          href="{%  url 'blog:atualizar_post' postagem.pk %}"
+          class="bg-blue-600 hover:bg-blue-800 text-white hover:text-gray-200 font-semibold rounded-xl text-2xl px-2 py-1 transition ease-in-out duration-700"
+          >Editar</a
+        >
+        <a
+          href="{%  url 'blog:deletar_post' postagem.pk %}"
+          class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 font-semibold rounded-xl text-2xl px-2 py-1 transition ease-in-out duration-700"
+          >Deletar</a
+        >
+        {% else %} {% if postagem.autor.usuario.pk == request.user.id %}
+        <a
+          href="{%  url 'blog:atualizar_post' postagem.pk %}"
+          class="bg-blue-600 hover:bg-blue-800 text-white hover:text-gray-200 font-semibold rounded-xl text-xl px-2 py-1 transition ease-in-out duration-700"
+          >Editar</a
+        >
+        <a
+          href="{%  url 'blog:deletar_post' postagem.pk %}"
+          class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 font-semibold rounded-xl text-xl px-2 py-1 transition ease-in-out duration-700"
+          >Deletar</a
+        >
+        {% else %} {% endif %} {% endif %}
       </div>
     </div>
   </div>
