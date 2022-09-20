@@ -41,7 +41,7 @@
       <p>{{postagem.texto}}</p>
       {% comment %} Validacao Visual para Editar e Apagar {% endcomment %}
       <div class="flex gap-2 justify-center mt-2">
-        {% if request.user.admin %}
+        {% if request.user.id == postagem.autor.id %}
         <a
           href="{%  url 'blog:atualizar_post' postagem.pk %}"
           class="bg-blue-600 hover:bg-blue-800 text-white hover:text-gray-200 font-semibold rounded-xl text-2xl px-2 py-1 transition ease-in-out duration-700"
@@ -52,15 +52,15 @@
           class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 font-semibold rounded-xl text-2xl px-2 py-1 transition ease-in-out duration-700"
           >Deletar</a
         >
-        {% else %} {% if postagem.autor.usuario.pk == request.user.id %}
+        {% else %} {% if request.user.admin %}
         <a
           href="{%  url 'blog:atualizar_post' postagem.pk %}"
-          class="bg-blue-600 hover:bg-blue-800 text-white hover:text-gray-200 font-semibold rounded-xl text-xl px-2 py-1 transition ease-in-out duration-700"
+          class="bg-blue-600 hover:bg-blue-800 text-white hover:text-gray-200 font-semibold rounded-xl text-2xl px-2 py-1 transition ease-in-out duration-700"
           >Editar</a
         >
         <a
           href="{%  url 'blog:deletar_post' postagem.pk %}"
-          class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 font-semibold rounded-xl text-xl px-2 py-1 transition ease-in-out duration-700"
+          class="bg-red-600 hover:bg-red-800 text-white hover:text-gray-200 font-semibold rounded-xl text-2xl px-2 py-1 transition ease-in-out duration-700"
           >Deletar</a
         >
         {% else %} {% endif %} {% endif %}
