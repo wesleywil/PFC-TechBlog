@@ -4,6 +4,18 @@
 
 Este é um projeto de conclusão de curso sobre um blog de tecnologia
 
+## Screenshots
+
+![Homepage](https://i.imgur.com/mZFKLhn.png)
+
+### Login
+
+![Login](https://i.imgur.com/6g0xoph.png)
+
+### Registro
+
+![Registro](https://i.imgur.com/y2wktIp.png)
+
 ## Características
 
 - Listar Postagens
@@ -21,6 +33,8 @@ Este é um projeto de conclusão de curso sobre um blog de tecnologia
 
 ## Rodando o Projeto
 
+Uso de Virtual Env
+
 ### Backend
 
     pip install -r requirements.txt
@@ -37,6 +51,6 @@ Este é um projeto de conclusão de curso sobre um blog de tecnologia
 
 **Backend:** Python, Django
 
-## Criado por
+## Created By
 
 - [wesley wilson](https://github.com/wesleywil)
