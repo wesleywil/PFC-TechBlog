@@ -41,6 +41,7 @@ urlpatterns = [
     path('login/', LoginView.as_view(authentication_form=MeuLoginForm), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('registro/', CriarContaView.as_view(), name='registro'),
+    path('djrichtextfield/', include('djrichtextfield.urls'))
 ]
 
 handler404 = "contas.views.pagina_nao_encontrada_view"

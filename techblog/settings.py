@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'postagens',
 
     #De Terceiros
+    'djrichtextfield'
 ]
 
 MIDDLEWARE = [
@@ -148,3 +149,20 @@ LOGIN_URL = "/login"
 LOGOUT_REDIRECT_URL = '/'
 
 CSRF_FAILURE_VIEW = 'contas.views.pagina_error_csrf_view'
+
+DJRICHTEXTFIELD_CONFIG = {
+    'js': ['//cdn.ckeditor.com/4.14.0/standard/ckeditor.js'],
+    'init_template': 'djrichtextfield/init/ckeditor.js',
+    'settings': {  # CKEditor
+    'toolbar': [
+        {'items': ['Format', '-', 'Bold', 'Italic', '-',
+                   'RemoveFormat']},
+        {'items': ['Link', 'Unlink', 'Table']},
+        {'items':['Styles']}
+    ],
+    'format_tags': 'p;h1;h2;h3',
+    'min_width': 700,
+    'max_width':1000,
+    'sanitizer': 'bleach.clean'
+}
+}

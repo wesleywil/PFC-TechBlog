@@ -34,7 +34,7 @@
             {{post.titulo}}
           </h1>
           <p class="leading-relaxed text-gray-200 mb-5">
-            {{post.texto |slice:":200"}}...
+            {{post.texto |truncatechars_html:200 | safe}}...
           </p>
           <div class="mb-2 ">
             <a class="text-red-400 hover:text-red-600 font-semibold px-2 py-1 rounded-md " href="{% url 'blog:detalhe_post' post.pk %}">Ler Mais</a>

@@ -38,7 +38,7 @@
       {% endfor %}
     </div>
     <div class="text-xl ml-4">
-      <p>{{postagem.texto}}</p>
+      <p>{{postagem.texto|safe}}</p>
       {% comment %} Validacao Visual para Editar e Apagar {% endcomment %}
       <div class="flex gap-2 justify-center mt-2">
         {% if request.user.id == postagem.autor.id %}

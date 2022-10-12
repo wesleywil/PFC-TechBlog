@@ -2,12 +2,13 @@ from django.db import models
 from contas.models import Usuario
 
 from PIL import Image
+from djrichtextfield.models import RichTextField
 
 class Postagem(models.Model):
     autor = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     foto = models.ImageField(upload_to="postagens/", default="postagens/predefinido/default.png")
     titulo = models.CharField(max_length=100)
-    texto = models.TextField()
+    texto = RichTextField()
     data_adicao = models.DateField(auto_now_add=True)
     categorias = models.ManyToManyField("Categoria", blank=True)
 
