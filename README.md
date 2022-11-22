@@ -33,17 +33,17 @@ Este é um projeto de conclusão de curso sobre um blog de tecnologia
 
 ## Rodando o Projeto
 
-Uso de Virtual Env
+### Criando Ambiente Virtual & Comandos necessarios
 
-### Backend
-
+    python -m venv env
+    env\scripts\activate
     pip install -r requirements.txt
 
-    python ./manage.py makemigrations contas
-    python ./manage.py makemigrations postagens
-    python ./manage.py migrate
-    python ./manage.py createsuperuser
-    ./manage.py runserver
+    python manage.py makemigrations contas
+    python manage.py makemigrations postagens
+    python manage.py migrate
+    python manage.py createsuperuser
+    python manage.py runserver
 
 ## Tecnologias Usadas
 
